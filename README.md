@@ -2,6 +2,10 @@
 
 A simple Contact List App that fetches contacts from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users/). Users can view, add, edit, and delete contacts.
 
+## Live Demo
+
+Check out the live demo [here](https://contact-list-app-sandy.vercel.app/).
+
 ## Features
 
 - **Fetch Contacts:** Contacts are fetched from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users/).
