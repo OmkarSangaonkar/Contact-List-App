@@ -4,18 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AddContact = () => {
+  // State to manage form input values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
+  // Accessing the 'contacts' state from Redux store
   const contacts = useSelector((state) => state.contacts);
 
+  // Creating Redux dispatch function
   const dispatch = useDispatch();
+
+  // Accessing the 'navigate' function from react-router-dom for navigation
   const navigate = useNavigate();
 
+  // Form submission handler
   const handelSubmit = (e) => {
     e.preventDefault();
 
+    // Checking if email or number already exist in the contacts
     const checkEmail = contacts.find(
       (contact) => contact.email === email && email
     );
@@ -23,6 +30,7 @@ const AddContact = () => {
       (contact) => contact.number === parseInt(number) && number
     );
 
+    // Validating form inputs and displaying it
     if (!email || !number || !name) {
       return toast.warning("Please fill in all fields!");
     }

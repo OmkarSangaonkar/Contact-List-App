@@ -4,12 +4,14 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const EditContact = () => {
+  // State to manage form input values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
   const { id } = useParams();
 
+  // Accessing the 'contacts' state from Redux store
   const contacts = useSelector((state) => state.contacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();

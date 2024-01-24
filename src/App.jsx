@@ -9,15 +9,19 @@ import EditContact from "./components/EditContact";
 import { useDispatch } from "react-redux";
 
 const App = () => {
+  // Creating a Redux dispatch function
   const dispatch = useDispatch();
   useEffect(() => {
+    // Initialize an empty array to store contacts
     const data = [];
+    // Fetching contacts from JSONPlaceholder API when the component mounts
     const promise = async () => {
       await fetch("https://jsonplaceholder.typicode.com/users/")
         .then((response) => response.json())
         .then((json) => {
           // eslint-disable-next-line array-callback-return
           json.map((contact) => {
+            // Mapping fetched data to the required format
             data.push({
               id: contact.id,
               name: contact.name,
@@ -26,6 +30,7 @@ const App = () => {
             });
           });
         });
+      // Dispatching an action to update Redux store with fetched contacts
       dispatch({ type: "FETCH_CONTACTS", payload: data });
     };
     promise();
